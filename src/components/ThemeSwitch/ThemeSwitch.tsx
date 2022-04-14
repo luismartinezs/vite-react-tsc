@@ -1,29 +1,34 @@
-import { useEffect } from 'react'
-import './ThemeSwitch.css'
-import { useTheme, useThemeDispatch } from '@/store/Theme'
+import { useEffect } from "react";
+import "./ThemeSwitch.css";
+import {
+  useTheme,
+  useThemeDispatch,
+  type IThemeContext,
+  type IThemeAction,
+} from "@/store/Theme";
 // eslint-disable-next-line import/no-unresolved
-import IconSun from '~icons/heroicons-outline/sun'
+import IconSun from "~icons/heroicons-outline/sun";
 // eslint-disable-next-line import/no-unresolved
-import IconMoon from '~icons/heroicons-outline/moon'
+import IconMoon from "~icons/heroicons-outline/moon";
 
 export default function ThemeSwitch(): JSX.Element {
-  const theme = useTheme()
-  const dispatch = useThemeDispatch()
+  const theme: IThemeContext = useTheme();
+  const dispatch: React.Dispatch<IThemeAction> = useThemeDispatch();
 
   function handleClick() {
     dispatch({
-      type: 'toggle-theme',
-    })
+      type: "toggle-theme",
+    });
   }
 
   useEffect(() => {
-    const html = document.documentElement
+    const html = document.documentElement;
     if (theme.darkMode) {
-      html.classList.add('dark')
+      html.classList.add("dark");
     } else {
-      html.classList.remove('dark')
+      html.classList.remove("dark");
     }
-  }, [theme])
+  }, [theme]);
 
   return (
     <button
@@ -38,5 +43,5 @@ export default function ThemeSwitch(): JSX.Element {
         {theme.darkMode ? <IconMoon /> : <IconSun />}
       </span>
     </button>
-  )
+  );
 }

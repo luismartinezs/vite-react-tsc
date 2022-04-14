@@ -1,24 +1,24 @@
 import * as React from "react";
 import { useReducer, createContext, useContext } from "react";
 
-interface ThemeContext {
+export interface IThemeContext {
   darkMode: boolean;
 }
 
-interface Action {
+export interface IThemeAction {
   readonly type: "toggle-theme";
 }
 
-export const ThemeContext = createContext<ThemeContext | null>(null);
+export const ThemeContext = createContext<IThemeContext | null>(null);
 export const ThemeDispatchContext =
-  createContext<React.Dispatch<Action> | null>(null);
+  createContext<React.Dispatch<IThemeAction> | null>(null);
 
-const initialTheme: Readonly<ThemeContext> = { darkMode: false };
+const initialTheme: Readonly<IThemeContext> = { darkMode: false };
 
 function themeReducer(
-  theme: Readonly<ThemeContext>,
-  action: Action
-): Readonly<ThemeContext> {
+  theme: Readonly<IThemeContext>,
+  action: IThemeAction
+): Readonly<IThemeContext> {
   switch (action.type) {
     case "toggle-theme": {
       return { darkMode: !theme.darkMode };
@@ -45,12 +45,12 @@ const ThemeProvider: React.FC<Props> = ({ children }: Props): JSX.Element => {
   );
 };
 
-export function useTheme(): Readonly<ThemeContext> {
-  return useContext(ThemeContext) as Readonly<ThemeContext>;
+export function useTheme(): Readonly<IThemeContext> {
+  return useContext(ThemeContext) as Readonly<IThemeContext>;
 }
 
-export function useThemeDispatch(): React.Dispatch<Action> {
-  return useContext(ThemeDispatchContext) as React.Dispatch<Action>;
+export function useThemeDispatch(): React.Dispatch<IThemeAction> {
+  return useContext(ThemeDispatchContext) as React.Dispatch<IThemeAction>;
 }
 
 export default ThemeProvider;

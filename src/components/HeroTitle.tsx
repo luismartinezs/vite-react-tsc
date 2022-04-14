@@ -1,8 +1,8 @@
 import GradientText from "@/components/GradientText";
-import { useTheme } from "@/store/Theme";
+import { useTheme, type IThemeContext } from "@/store/Theme";
 
 const HeroTitle: React.FC = (): JSX.Element => {
-  const theme = useTheme();
+  const theme: IThemeContext = useTheme();
 
   const lightThemeTitle: JSX.Element = (
     <span>
