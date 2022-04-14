@@ -1,7 +1,7 @@
-import FeatureItem from '@/components/FeatureItem'
-import SectionWrapper from '@/components/SectionWrapper'
+import FeatureItem from "@/components/FeatureItem";
+import SectionWrapper from "@/components/SectionWrapper";
 
-export default function FeatureSection() {
+const FeatureSection: React.FC = (): JSX.Element => {
   return (
     <SectionWrapper>
       <div className="flex justify-center items-start flex-col md:flex-row md:space-x-28 space-y-10 md:space-y-0">
@@ -19,5 +19,7 @@ export default function FeatureSection() {
         </FeatureItem>
       </div>
     </SectionWrapper>
-  )
-}
+  );
+};
+
+export default FeatureSection;

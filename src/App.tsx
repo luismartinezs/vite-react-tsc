@@ -6,9 +6,9 @@ import FeatureSection from '@/components/FeatureSection'
 import BarSection from '@/components/BarSection'
 import ThemeProvider from '@/store/Theme'
 
-function App() {
-  const headerHeight = 54
-  const barHeight = 24
+function App(): JSX.Element {
+  const headerHeight: number = 54
+  const barHeight: number = 24
 
   return (
     <ThemeProvider>

@@ -1,4 +1,4 @@
-export default function NoteSection() {
+const NoteSection: React.FC = (): JSX.Element => {
   return (
     <div className="py-4 flex justify-center items-center text-xs text-gray-700 font-medium dark:text-gray-200">
       Special sponsor
@@ -9,5 +9,7 @@ export default function NoteSection() {
       />
       Advanced IDE for React
     </div>
-  )
-}
+  );
+};
+
+export default NoteSection;

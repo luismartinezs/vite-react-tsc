@@ -6,7 +6,7 @@ import IconSun from '~icons/heroicons-outline/sun'
 // eslint-disable-next-line import/no-unresolved
 import IconMoon from '~icons/heroicons-outline/moon'
 
-export default function ThemeSwitch() {
+export default function ThemeSwitch(): JSX.Element {
   const theme = useTheme()
   const dispatch = useThemeDispatch()
 
@@ -17,7 +17,7 @@ export default function ThemeSwitch() {
   }
 
   useEffect(() => {
-    const html = document.firstElementChild
+    const html = document.documentElement
     if (theme.darkMode) {
       html.classList.add('dark')
     } else {

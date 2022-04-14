@@ -1,3 +1,4 @@
+// this is part of a tutorial, doesn't do anything to the page
 type Place = "home" | "work" | { custom: string };
 
 type Todo = Readonly<{

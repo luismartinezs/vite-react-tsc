@@ -1,8 +1,17 @@
-import SiteLogo from '@/components/SiteLogo'
-import LineSpacer from '@/components/LineSpacer'
-import ThemeSwitch from '@/components/ThemeSwitch/ThemeSwitch'
+import SiteLogo from "@/components/SiteLogo";
+import LineSpacer from "@/components/LineSpacer";
+import ThemeSwitch from "@/components/ThemeSwitch/ThemeSwitch";
 
-export default function HeaderSection({ headerHeight = 60, offsetTop = 0 }) {
+type Props = {
+  children?: React.ReactNode;
+  headerHeight: number;
+  offsetTop: number;
+};
+
+const HeaderSection: React.FC<Props> = ({
+  headerHeight = 60,
+  offsetTop = 0,
+}: Props): JSX.Element => {
   return (
     <div
       className="fixed left-0 right-0 bg-white dark:bg-gray-800 transition duration-300"
@@ -20,5 +29,7 @@ export default function HeaderSection({ headerHeight = 60, offsetTop = 0 }) {
       </header>
       <LineSpacer />
     </div>
-  )
-}
+  );
+};
+
+export default HeaderSection;

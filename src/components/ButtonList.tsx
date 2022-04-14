@@ -4,7 +4,7 @@ import IconPlayCircleFilled from '~icons/mdi/play-circle-filled'
 // eslint-disable-next-line import/no-unresolved
 import IconArrowRight from '~icons/mdi/arrow-right'
 
-export default function ButtonList() {
+const ButtonList: React.FC = (): JSX.Element => {
   return (
     <ul className="flex space-x-4">
       <li>
@@ -25,3 +25,5 @@ export default function ButtonList() {
     </ul>
   )
 }
+
+export default ButtonList

@@ -1,4 +1,4 @@
-export default function SiteLogo() {
+const SiteLogo: React.FC = (): JSX.Element => {
   return (
     <div className="flex items-center space-x-2">
       <img
@@ -8,5 +8,7 @@ export default function SiteLogo() {
       />
       <span className="font-semibold dark:text-gray-200">React.js</span>
     </div>
-  )
-}
+  );
+};
+
+export default SiteLogo;

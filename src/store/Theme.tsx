@@ -1,23 +1,40 @@
-import { useReducer, createContext, useContext } from 'react'
+import * as React from "react";
+import { useReducer, createContext, useContext } from "react";
 
-export const ThemeContext = createContext(null)
-export const ThemeDispatchContext = createContext(null)
+interface ThemeContext {
+  darkMode: boolean;
+}
 
-function themeReducer(theme, action) {
+interface Action {
+  readonly type: "toggle-theme";
+}
+
+export const ThemeContext = createContext<ThemeContext | null>(null);
+export const ThemeDispatchContext =
+  createContext<React.Dispatch<Action> | null>(null);
+
+const initialTheme: Readonly<ThemeContext> = { darkMode: false };
+
+function themeReducer(
+  theme: Readonly<ThemeContext>,
+  action: Action
+): Readonly<ThemeContext> {
   switch (action.type) {
-    case 'toggle-theme': {
-      return { darkMode: !theme.darkMode }
+    case "toggle-theme": {
+      return { darkMode: !theme.darkMode };
     }
     default: {
-      throw Error(`Unknown action: ${action.type}`)
+      throw Error(`Unknown action: ${action.type}`);
     }
   }
 }
 
-const initialTheme = { darkMode: false }
+interface Props {
+  children?: React.ReactNode;
+}
 
-export default function ThemeProvider({ children }) {
-  const [theme, dispatch] = useReducer(themeReducer, initialTheme)
+const ThemeProvider: React.FC<Props> = ({ children }: Props): JSX.Element => {
+  const [theme, dispatch] = useReducer(themeReducer, initialTheme);
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -25,13 +42,15 @@ export default function ThemeProvider({ children }) {
         {children}
       </ThemeDispatchContext.Provider>
     </ThemeContext.Provider>
-  )
+  );
+};
+
+export function useTheme(): Readonly<ThemeContext> {
+  return useContext(ThemeContext) as Readonly<ThemeContext>;
 }
 
-export function useTheme() {
-  return useContext(ThemeContext)
+export function useThemeDispatch(): React.Dispatch<Action> {
+  return useContext(ThemeDispatchContext) as React.Dispatch<Action>;
 }
 
-export function useThemeDispatch() {
-  return useContext(ThemeDispatchContext)
-}
+export default ThemeProvider;

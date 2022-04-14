@@ -1,4 +1,12 @@
-export default function FeatureItem({ title, children }) {
+interface Props {
+  title: string;
+  children?: React.ReactNode;
+}
+
+const FeatureItem: React.FC<Props> = ({
+  title,
+  children,
+}: Props): JSX.Element => {
   return (
     <div>
       <h2 className="font-semibold text-xl dark:text-gray-200">{title}</h2>
@@ -6,5 +14,7 @@ export default function FeatureItem({ title, children }) {
         {children}
       </p>
     </div>
-  )
-}
+  );
+};
+
+export default FeatureItem;
